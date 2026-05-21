@@ -1,0 +1,48 @@
+---
+const { navn, titel, tekst, billede } = Astro.props;
+---
+
+<h2>Hvem er vi?</h2>
+
+<div class="team">
+    <img src={billede} alt={navn} />
+    <h3>{navn}</h3>
+    <p class="titel">{titel}</p>
+    <p>{tekst}</p>
+  </div>
+
+
+
+
+<style>
+
+h2{
+   text-align: center;
+}
+
+    .team {
+        margin-top: 2rem;
+        padding: 3rem 2rem 0;
+      max-width: 400px;
+    margin: 0 auto;
+    
+    }
+
+    .team img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    
+  
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+</style>
