@@ -1,16 +1,29 @@
 ---
-const{shopData}=Astro.props
-//@ts-nocheck
+const { ShopData } = Astro.props;
+import RundKnap from "../components/RundKnap.astro";
 ---
 
 <article>
-  <img src={shopData.Photo} alt={shopData.Photo}>
-    <h2>{shopData.Name}</h2>
-     <p class="Description">{shopData.Description}</p>
-    <p>{shopData.Price}</p>
-    <a href={"/button/" + shopData.slug}>KØB NU</a>
-   </article>
+    <img src={ShopData.Photo} alt={ShopData.Name} /> 
+    <p><strong>{ShopData.Name}</strong></p>
+    <p>{ShopData.Price}</p>
+    <RundKnap tekst="KØB NU" href={"/button/" + ShopData.slug} />  <!-- ← ret her -->
+</article>
 
-   <style>
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-   </style>
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+
+</style>

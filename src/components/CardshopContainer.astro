@@ -1,6 +1,6 @@
 ---
 //@ts-nocheck
-import Card from "./Cardshop.astro";
+import Cardshop from "../components/Cardshop.astro";
 const options = {
     headers:{
         apikey:
@@ -14,5 +14,6 @@ const data = await response.json()
 
 
 {data.map((Shop) => 
-    <Card ShopData={Shop} />
+    <Cardshop ShopData={Shop} />
 )}
+
