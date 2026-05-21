@@ -1,0 +1,117 @@
+---
+
+---
+
+<footer>
+    <img src="/imgs/stor-logo.svg" alt="Logo" />
+    <section class="info">
+        <div>
+            <h3>Kontakt os</h3>
+            <p>Addresse: Flensborggade 6, København V 1669</p>
+            <p>Webshop: kundeservice@sostertilsoster.dk</p>
+            <p>Sekretariatet: info@sostertilsoster.dk</p>
+        </div>
+        <div>
+            <h3>Sociale medier</h3>
+            <span class="social-logos">
+                <a href="https://www.instagram.com/sostertilsoster/" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61562454382673" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/s%C3%B8ster-til-s%C3%B8ster/" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+            </span>
+        </div>
+        <p class="copyright">Copyright © 2026 Søster til Søster</p>
+    </section>
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.5rem 1.5rem;
+        background-color: #a3bfb2;
+    }
+
+    footer img {
+        width: 180px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .info h3 {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .info div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .social-logos {
+        display: flex;
+        gap: 0.5rem;
+        background-color: #2d4a3e;
+        border-radius: 999px;
+        padding: 0.6rem 1rem;
+        width: fit-content;
+    }
+
+    .social-logos a {
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s;
+    }
+
+    .social-logos a:hover {
+        opacity: 0.7;
+    }
+
+    .copyright {
+        font-size: 0.9rem;
+    }
+
+    @media (min-width: 768px) {
+        footer {
+            flex-direction: row;
+            justify-content: center;
+            gap: 20rem;
+            padding: 3rem 5rem;
+        }
+
+        footer img {
+            width: 220px;
+        }
+
+        .info {
+            align-items: center;
+        }
+    }
+</style>
