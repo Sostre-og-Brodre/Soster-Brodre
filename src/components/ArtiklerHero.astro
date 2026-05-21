@@ -1,0 +1,73 @@
+---
+import RundKnap from "../components/RundKnap.astro";
+---
+
+<section class="hero">
+    <h1>Artikler</h1>
+</section>
+
+<section class="kategorier">
+    <h2>Kategorier</h2>
+    <div class="knapper">
+        <RundKnap tekst="SUNDHED" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="POLITIK" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="DEBAT" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="FAMILIE" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="UDDANNELSE" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="SAMFUND" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="KULTUR" href="/artikel" variant="lysebrun" />
+        <RundKnap tekst="KARRIERE" href="/artikel" variant="lysebrun" />
+    </div>
+</section>
+
+<style>
+    .hero {
+        background-color: rgba(163, 191, 178, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 1.5rem;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .kategorier {
+        background-color: rgba(115, 77, 63, 0.3);
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    .knapper {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+        .hero {
+            padding: 5rem 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        .kategorier {
+            padding: 3rem 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
