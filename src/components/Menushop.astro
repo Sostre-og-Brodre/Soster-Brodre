@@ -1,0 +1,46 @@
+---
+import RundKnap from "./RundKnap.astro";
+
+const { categories } = Astro.props;
+---
+
+<div class="filter-menu">
+
+  <button class="filter-btn" data-category="Alle">
+    <RundKnap tekst="Alle" />
+  </button>
+
+  {
+    categories.map((category: string) => (
+      <button
+        class="filter-btn"
+        data-category={category}
+      >
+        <RundKnap tekst={category} />
+      </button>
+    ))
+  }
+
+</div>
+
+<style>
+  .filter-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+        justify-content: center;
+  }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    .filter-menu {
+     display: flex;
+    }
+  }
+</style>
