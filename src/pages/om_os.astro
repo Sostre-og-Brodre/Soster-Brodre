@@ -2,8 +2,30 @@
 import "../style/global.css";
 import PageLayout from "../PageLayout/PageLayout.astro";
 import OmOsHero from "../components/OmOsHero.astro";
+import Forskning from "../components/Forskning.astro";
+import Team from "../components/Team.astro";
 ---
 
 <PageLayout>
   <OmOsHero />
+  <Forskning />
+
+
+  <section class="team">
+
+    <Team
+      billede="/imgs/caroline_result.webp"
+      navn="Caroline"
+      titel="MEDSTIFTER & FORPERSON"
+      tekst="Caroline er den drivende kraft bag Søster til Søster og sætter den strategiske retning for organisationens arbejde med køn og ligestilling."
+    />
+  </section>
+
+  <style>
+    .team {
+      background-color: #F2B6B680;
+      padding: 3rem 2rem 4rem;
+      width: 100%;
+    }
+  </style>
 </PageLayout>
