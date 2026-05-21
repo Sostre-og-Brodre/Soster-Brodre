@@ -4,6 +4,9 @@ import PageLayout from "../PageLayout/PageLayout.astro";
 import OmOsHero from "../components/OmOsHero.astro";
 import Forskning from "../components/Forskning.astro";
 import Team from "../components/Team.astro";
+import Samarbejdspartnere from "../components/Samarbejdspartnere.astro";
+import Samarbejde from "../components/Samarbejde.astro";
+import Skriv from "../components/Skriv.astro";
 ---
 
 <PageLayout>
@@ -13,13 +16,48 @@ import Team from "../components/Team.astro";
 
   <section class="team">
 
+  <h2 class="hvemervi">Hvem er vi?</h2>
+
     <Team
       billede="/imgs/caroline_result.webp"
       navn="Caroline"
       titel="MEDSTIFTER & FORPERSON"
       tekst="Caroline er den drivende kraft bag Søster til Søster og sætter den strategiske retning for organisationens arbejde med køn og ligestilling."
     />
+
+    <Team
+    billede="/imgs/ulrikke_result.webp"
+    navn="Ulrikke"
+    titel="RESEARCHER & GRAFIKER"
+    tekst="Ulrikke er organisationens blæksprutte — hun researcher, skriver og omsætter kompleks viden til tilgængeligt visuelt indhold."
+  />
+
+  <Team
+  billede="/imgs/oskar_result.webp"
+  navn="Oskar"
+  titel="PARTNERSKABER & ØKONOMI"
+  tekst="Oskar varetager samarbejder med partnere og organisationer og har ansvaret for den daglige økonomi."
+/>
+
+<Team
+billede="/imgs/karo_result.webp"
+navn="Karoline"
+titel="WEBSHOP ANSVARLIG"
+tekst="Karoline driver vores webshop og sikrer, at organisationens produkter er tilgængelige og opdaterede."
+/>
+
+<Team
+billede="/imgs/josefine_result.webp"
+navn="Josefine"
+titel="PODCAST & RESEARCH"
+tekst="Josefine står bag vores podcast og bidrager til den løbende research og formidling af nyheder om ligestilling."
+/>
+
+ 
   </section>
+
+  <Samarbejdspartnere />
+
 
   <style>
     .team {
@@ -27,5 +65,64 @@ import Team from "../components/Team.astro";
       padding: 3rem 2rem 4rem;
       width: 100%;
     }
+.hvemervi {
+  text-align: center;
+}
+
   </style>
+
+
+
+
+
+<section class="samarbejde">
+
+  <h2>Hvordan samarbejder vi?</h2>
+
+  <Samarbejde
+    titel="Brandet content"
+    tekst="Sponsorerede opslag, serier eller kampagner, der formidler jeres budskab til vores fællesskab i et sprog og format, der virker."
+    punkter={[
+      "Instagram & LinkedIn",
+      "Carousels & reels",
+      "Redaktionel tone"
+    ]}
+  />
+
+
+  <Samarbejde
+titel="Fondsstøttede projekter"
+tekst="Længere forløb med dybere research og bredere formidling, typisk i samarbejde med fonde, styrelser eller organisationer."
+punkter={[
+  "Projektledelse",
+  "Research & analyse",
+  "Visuel og skriftlig formidling"
+]}
+/>
+
+  <Samarbejde
+  titel="Foredrag & oplæg"
+  tekst="Vi holder oplæg på arbejdspladser, konferencer og uddannelsesinstitutioner om køn, medier og ligestilling."
+  punkter={[
+    "Keynotes",
+    "Workshops",
+    "Paneldebatter"
+  ]}
+/>
+</section>
+
+<style>
+  .samarbejde h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+    .samarbejde {
+      background-color: #F2B6B680;
+      padding: 3rem 2rem 4rem;
+      width: 100%;
+    }
+</style>
+
+
+  <Skriv/>
 </PageLayout>
