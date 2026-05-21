@@ -1,0 +1,30 @@
+---
+const { kildetitle, kildelink1, kildelink2, kildelink3 } = Astro.props;
+---
+
+<div class="afsnit">
+    <h3>{kildetitle}</h3>
+    <p>
+        <a href={kildelink1} target="_blank" rel="noopener noreferrer">{kildelink1}</a>
+        <a href={kildelink2} target="_blank" rel="noopener noreferrer">{kildelink2}</a>
+        <a href={kildelink3} target="_blank" rel="noopener noreferrer">{kildelink3}</a>
+    </p>
+</div>
+
+<style>
+    h3 {
+        margin-bottom: 1rem;
+    }
+
+    .afsnit {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    a {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #000;
+    }
+</style>

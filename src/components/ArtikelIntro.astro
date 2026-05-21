@@ -1,0 +1,88 @@
+---
+const { title, billede, billedeAlt, citat, beskrivelse, undertitle, dato, forfatter } = Astro.props;
+---
+
+<article>
+    <h1>{title}</h1>
+
+    <div class="intro">
+        <img src={billede} alt={billedeAlt} />
+        <div class="info">
+            <p class="undertitle">{undertitle}</p>
+            <p class="dato">{dato}</p>
+            <p class="forfatter">Af {forfatter}</p>
+            <blockquote>{citat}</blockquote>
+        </div>
+    </div>
+
+    <p class="beskrivelse">{beskrivelse}</p>
+</article>
+
+<style>
+    article {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    img {
+        width: 45%;
+        flex-shrink: 0;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .undertitle {
+        text-decoration: underline;
+        margin-bottom: -0.5rem;
+    }
+
+    .dato {
+        font-size: 0.95rem;
+        margin-bottom: -1rem;
+    }
+
+    .forfatter {
+        font-size: 0.85rem;
+        color: #666;
+    }
+
+    blockquote {
+        margin-top: 1rem;
+        font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        .intro {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        img {
+            width: 45%;
+            flex-shrink: 0;
+        }
+    }
+</style>
