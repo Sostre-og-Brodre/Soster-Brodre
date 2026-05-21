@@ -1,0 +1,67 @@
+---
+//@ts-nocheck
+
+export async function getStaticPaths() {
+  const options = {
+    headers: {
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs"
+    }
+  };
+
+  const response = await fetch(
+    "https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop",
+    options
+  );
+  const data = await response.json();
+
+  return data
+    .filter((shop) => shop.slug)  // ← fjern produkter uden slug
+    .map((shop) => ({
+      params: { slug: shop.slug },
+      props:  { shop }
+    }));
+}
+
+const { shop } = Astro.props;
+import PageLayout from "../../PageLayout/PageLayout.astro";
+---
+
+<PageLayout heading={shop.Name}>
+    <h1>{shop.Name}</h1>
+    <img src={shop.Photo} alt={shop.Name} />
+    <p>{shop.Description}</p>
+    <p>Pris: {shop.Price}</p>
+    <a href="/shop">← Tilbage til shop</a>
+</PageLayout><!-- ---
+//@ts-nocheck
+import PageLayout from "../../PageLayout/PageLayout.astro";
+export async function getStaticPaths() {
+  const options = {
+    headers: {
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs"
+    }
+  };
+
+  const response = await fetch(
+    "https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop",
+    options  // ← manglede her!
+  );
+  const data = await response.json();
+
+  return data.map((shop) => ({
+    params: { slug: shop.slug },
+    props:  { shop }
+  }));
+}
+
+const {shop} = Astro.props;
+
+---
+
+<PageLayout heading={shop.Name}>
+    <h1>{shop.Name}</h1>
+    <img src={shop.Photo} alt={shop.Name} />
+    <p>{shop.Description}</p>
+    <p>Pris: {shop.Price}</p>
+    <a href="/shop">← Tilbage til shop</a>
+</PageLayout> -->
