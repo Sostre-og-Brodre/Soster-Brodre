@@ -1,0 +1,32 @@
+---
+const { tekst, href, variant = "brun", target = "_self" } = Astro.props;
+---
+
+<a href={href} class={`btn btn--${variant}`} target={target}>
+    {tekst}
+</a>
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 1rem 1.5rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .btn--brun {
+        background-color: #734d3f;
+        color: white;
+    }
+
+    .btn--hvid {
+        background-color: #ffffff;
+        color: #734d3f;
+        stroke: #734d3f;
+    }
+</style>
