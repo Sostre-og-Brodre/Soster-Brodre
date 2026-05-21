@@ -1,0 +1,16 @@
+---
+const{shopData}=Astro.props
+//@ts-nocheck
+---
+
+<article>
+  <img src={shopData.Photo} alt={shopData.Photo}>
+    <h2>{shopData.Name}</h2>
+     <p class="Description">{shopData.Description}</p>
+    <p>{shopData.Price}</p>
+    <a href={"/button/" + shopData.slug}>KØB NU</a>
+   </article>
+
+   <style>
+
+   </style>
