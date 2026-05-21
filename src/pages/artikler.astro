@@ -1,6 +1,47 @@
 ---
 import "../style/global.css";
 import PageLayout from "../PageLayout/PageLayout.astro";
+import ArtiklerHero from "../components/ArtiklerHero.astro";
+import ArtiklerCard from "../components/ArtiklerCard.astro";
 ---
 
-<PageLayout heading="Artikler" />
+<PageLayout heading="Artikel">
+    <ArtiklerHero />
+    <div class="indhold">
+        <h3>Seneste artikler</h3>
+        <div class="kort-grid">
+            <ArtiklerCard billede="../imgs/EU-flag.png" billedeAlt="Billede af EU flag" titel="Sådan stemte de danske medlemmer af Europa-Parlementet" kategori="Politik" dato="29. april 2026" href="/artikel" />
+            <ArtiklerCard billede="../imgs/V-tegning.png" billedeAlt="Tegning af vagina" titel="Hvis den vaginale fødsel er den rigtige, er kejsersnit så den forkerte?" kategori="Sundhed" dato="28. april 2026" href="/artikel" />
+            <ArtiklerCard billede="../imgs/Stresset-kvinde.png" billedeAlt="Billede af en stresset kvinde" titel="52% af kvinder i alderen 16-24 år er stressede" kategori="Sundhed" dato="20. marts 2026" href="/artikel" />
+            <ArtiklerCard billede="../imgs/Venner.png" billedeAlt="Billede af en gruppe venner" titel="Vi er så fucking trætte – men vi står sammen" kategori="Kultur" dato="4. oktober 2025" href="/artikel" />
+            <ArtiklerCard billede="../imgs/Aeldre-damer.png" billedeAlt="Billede med to ældre damer" titel="Make conversations cool again!" kategori="Debat" dato="2. juli 2025" href="/artikel" />
+            <ArtiklerCard billede="../imgs/Mikrofeminisme.png" billedeAlt="Gammel billede af kvinde til demonstration" titel="Hvad er Mikrofeminisme?" kategori="Kultur" dato="31. marts 2025" href="/artikel" />
+            <ArtiklerCard billede="../imgs/Tamponer-bind.png" billedeAlt="Billede af en tampon og en bind" titel="Når kroppen bløder i stilhed, må vi lære at lytte" kategori="Sundhed" dato="11. marts 2026" href="/artikel" />
+        </div>
+    </div>
+</PageLayout>
+
+<style>
+    .indhold {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .kort-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .indhold {
+            padding: 2rem;
+        }
+
+        .kort-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+    }
+</style>

@@ -11,7 +11,10 @@ const { tekst, href, variant = "brun", target = "_self" } = Astro.props;
         display: inline-block;
         padding: 1rem 1.5rem;
         border-radius: 9999px;
+        font-family: Urbanist, sans-serif;
+        font-weight: 700;
         text-decoration: none;
+        text-align: center;
         transition: opacity 0.2s ease;
     }
 
@@ -21,6 +24,11 @@ const { tekst, href, variant = "brun", target = "_self" } = Astro.props;
 
     .btn--brun {
         background-color: #734d3f;
+        color: white;
+    }
+
+    .btn--lysebrun {
+        background-color: rgba(115, 77, 63, 0.6);
         color: white;
     }
 
