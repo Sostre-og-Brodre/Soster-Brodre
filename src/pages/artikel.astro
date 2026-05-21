@@ -1,6 +1,37 @@
 ---
 import "../style/global.css";
 import PageLayout from "../PageLayout/PageLayout.astro";
+import ArtikelIntro from "../components/ArtikelIntro.astro";
+import ArtikelIndhold from "../components/ArtikelIndhold.astro";
+import ArtikelKilder from "../components/ArtikelKilder.astro";
 ---
 
-<PageLayout heading="Artikel" />
+<PageLayout heading="Artikel">
+    <ArtikelIntro
+        title="52% af kvinder i alderen 16-24 år er stressede"
+        billede="../imgs/Stresset-kvinde.png"
+        billedeAlt="Et billede af en stresset kvinde"
+        undertitle="Sundhed"
+        dato="20. marts 2026"
+        forfatter="Ulrikke Møhl"
+        citat="“En betydelig andel i befolkning oplever søvnbesvær, angst og depression, og især blandt unge kvinder ses fortsat høje forekomster af mistrivsel.“"
+        beskrivelse="Sådan lyder forordet i Den Nationale Sundhedsprofil 2025, der udkom 5. marts 2026. Den Nationale Sundhedsprofil har undersøgt danskernes sundhed på tværs af alder, uddannelse, erhverv og køn. Særligt iøjnefaldende er unge kvinders sundhed, for ikke at sige mangel på samme. Kvinder i alderen 16 til 24 år scorer på både det fysiske og mentale helbred mærkbart anderledes end mændene. Derudover er udviklingen fra 2010 til 2025 gået i den gale retning."
+    />
+    <ArtikelIndhold
+        title="Lad os se på tallene"
+        indhold="52% af kvinder i alderen 16-24 år er stressede. Generelt har 29,5 % af befolkningen en høj score på stressskalaen. Tallene viser, at andelen er større hos kvinder (33,2 %) end hos mænd (25,8 %), hvor den markant største andel ligger hos de unge kvinder (52,0 %) kontra de unge mænd (31,6 %). 
+        Det er ikke kun chokerende i sig selv, at over halvdelen af de unge kvinder scorer højt på stressskalaen. Det er særligt bemærkelsesværdigt, set i lyset af den voldsomme udvikling. I 2010 havde cirka 30% af kvinderne i samme aldersgruppe en høj score. Der er altså sket en markant stigning på bare 15 år."
+    />
+    <ArtikelIndhold
+        title="Hvad koster stress?"
+        indhold="Stress koster samfundskassen cirka 55 mia. kroner om året. En analyse viser, at arbejdsrelateret stress koster både samfundet og den enkelte dyrt. Mennesker, der er ramt af stress arbejder mindre og har flere sygedage. Det betyder helt konkret, at stress forårsager 1,5 mio. fraværsdage om året, og en halv million stressrelaterede henvendelser til læger.
+        Vedvarende stress kan være skadeligt for kroppen, fordi den ikke er skabt til at være i konstant beredskab. Langvarige stressbelastninger udgør en væsentlig risikofaktor for udviklingen af sygdomme. Det kan øge risikoen for forhøjet blodtryk, hjerte-kar-sygdomme og depression.
+        Årligt dør 1400 mennesker af stress i Danmark. Når Den Nationale Sundhedsprofil kalder dette for “mistrivsel”, er det nok ikke meget ved siden af, at kalde det en underdrivelse ude af proportioner. Hermed en kærlig opfordring til at have tallene i mente, når vi alle skal til stemmeboksene på tirsdag."
+    />
+    <ArtikelKilder
+        kildetitle="Kilder"
+        kildelink1="https://psykiatrifonden.dk/viden/temaer/tema-stress"
+        kildelink2="https://www.ae.dk/analyse/2024-03-stress-koster-55-mia-kr-om-aaret"
+        kildelink3="https://www.sdu.dk/da/sif/rapporter/2026/den_nationale_sundhedsprofil_2025"
+    />
+</PageLayout>
