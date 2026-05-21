@@ -2,6 +2,85 @@
 import "../style/global.css";
 import PageLayout from "../PageLayout/PageLayout.astro";
 import Cardshop from "../components/Cardshop.astro";
+import Menushop from "../components/Menushop.astro";
+import CardshopContainer from "../components/CardshopContainer.astro";
+
+const options = {
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
+    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
+  }
+};
+
+const response = await fetch(
+  "https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop",
+  options
+);
+
+const data = await response.json();
+
+const categories = [...new Set(data.map((item: { Category: any; }) => item.Category))];
+---
+
+<PageLayout heading="Shop">
+
+  <div class="textshop">
+    <h1>Vores Webshop</h1>
+    <p>I Søstre & Brødres webshop kan du købe produkter, der både skaber synlighed omkring køn, ligestilling og fællesskab - og samtidig støtter vores arbejde. Her finder du blandt andet merchandise, plakater og andre udvalgte produkter, hvor overskuddet er med til at styrke vores oplysningsarbejde, udvikle nye initiativer samt støtte XXX.</p>
+
+  </div>
+
+  <!-- FILTER MENU -->
+  <Menushop categories={categories} />
+
+  <!-- PRODUKTER -->
+  <div class="grid">
+
+    {data.map((shop: any) => (
+      <div
+        class="shop-item"
+        data-category={shop.Category}
+      >
+        <Cardshop ShopData={shop} />
+      </div>
+    ))}
+
+  </div>
+
+</PageLayout>
+
+<script>
+  const buttons = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll(".shop-item");
+
+  buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const category = button.dataset.category;
+
+      items.forEach(item => {
+
+        if (
+          category === "Alle" ||
+          item.dataset.category === category
+        ) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+
+      });
+
+    });
+
+  });
+</script>
+<!-- ---
+import "../style/global.css";
+import PageLayout from "../PageLayout/PageLayout.astro";
+import Cardshop from "../components/Cardshop.astro";
+import Menushop from "../components/Menushop.astro";
 
 const options = {
   headers: {
@@ -12,27 +91,51 @@ const options = {
 const response = await fetch("https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop", options);
 const data = await response.json();
 
+
 ---
 
 <PageLayout heading="Shop">
+  <div class="textshop"><h1>Vores Webshop</h1>
+  <p>I Søstre & Brødres webshop kan du købe produkter, der både skaber synlighed omkring køn, ligestilling og fællesskab - og samtidig støtter vores arbejde. Her finder du blandt andet merchandise, plakater og andre udvalgte produkter, hvor overskuddet er med til at styrke vores oplysningsarbejde, udvikle nye initiativer samt støtte XXX.</p></div>
+  <Menushop />
   <div class="grid">
     {data.map((shop) => (
       <Cardshop ShopData={shop} />
     ))}
   </div>
 </PageLayout>
-
+-->
 <style>
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 4rem;
     padding: 1rem;
+      
+  }
+  p {
+    margin-top: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+  .textshop {
+    text-align: center;
+    margin: 2rem 0;
   }
 
   @media (max-width: 600px) {
     .grid {
       grid-template-columns: repeat(2, 1fr);
-    }
+    gap: 2rem;
+  
+    } 
+    p {
+      margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
-</style>
+       
+
+
+  }
+</style> 
