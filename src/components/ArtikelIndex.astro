@@ -1,0 +1,66 @@
+---
+import RundKnap from "./RundKnap.astro";
+import ArtiklerCard from "./ArtiklerCard.astro";
+---
+
+<section class="artikler">
+  <h2>Artikler</h2>
+  <p class="undertitel">Læs med og bliv en del af samtalen</p>
+
+  <div class="indhold">
+    <div class="kort-grid">
+      <ArtiklerCard billede="/imgs/Stresset-kvinde.png" billedeAlt="Billede af en stresset kvinde" titel="52% af kvinder i alderen 16-24 år er stressede" kategori="Sundhed" dato="20. marts 2026" href="/artikel" />
+      <ArtiklerCard billede="/imgs/Venner.png" billedeAlt="Billede af en gruppe venner" titel="Vi er så fucking trætte – men vi står sammen" kategori="Kultur" dato="4. oktober 2025" href="/artikel" />
+    </div>
+    <div class="knap">
+      <RundKnap tekst="Læs mere" href="/artikler" variant="brun" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .artikler {
+    background-color: rgba(163, 191, 178, 0.5);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .artikler h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .undertitel {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .indhold {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .kort-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .knap {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .artikler {
+      padding: 4rem 0;
+    }
+
+    .kort-grid {
+      gap: 2rem;
+    }
+  }
+</style>

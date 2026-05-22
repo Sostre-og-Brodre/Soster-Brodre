@@ -1,0 +1,65 @@
+---
+import RundKnap from "./RundKnap.astro";
+---
+
+<section class="instagram">
+  <h2>Vores Instagram</h2>
+
+  <div class="billede">
+    <img src="/imgs/SoMeindex.webp" alt="Vores Instagram opslag" />
+  </div>
+
+  <div class="knap">
+    <RundKnap tekst="Følg os her" href="https://www.instagram.com/sostertilsoster/" variant="brun" target="_blank" />
+  </div>
+</section>
+
+<style>
+  .instagram {
+    background-color: #f5ede3;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .instagram h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .billede {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .billede img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .knap {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .instagram {
+      padding: 4rem 2rem;
+    }
+
+    .billede {
+      max-width: 560px;
+    }
+
+    .instagram h2 {
+      font-size: 2.5rem;
+    }
+    .instagram h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 2rem 0;
+    }
+  }
+</style>
