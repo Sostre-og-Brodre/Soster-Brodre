@@ -1,0 +1,80 @@
+---
+
+---
+
+<section class="omosindex">
+  <h2>Om os</h2>
+  <div class="content">
+    <p>Søstre & Brødre formidler forskning, nyheder og analyser om køn og ligestilling. Sammen skaber vi fællesskab om det, der betyder noget.</p>
+    <img src="/imgs/fællesbillede.webp" alt="Søstre & Brødre teamet" />
+  </div>
+</section>
+
+<style>
+  .omosindex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(163, 191, 178, 0.5);
+    padding: 3rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .omosindex h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .omosindex p {
+    max-width: 420px;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .omosindex img {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .omosindex {
+      padding: 4rem 6rem;
+    }
+
+    .omosindex h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 2rem 0;
+    }
+
+    .content {
+      flex-direction: row;
+      align-items: center;
+      align-items: flex-start;
+      gap: 4rem;
+    }
+
+    .omosindex img {
+      max-width: 460px;
+      flex-shrink: 0;
+      order: -1;
+    }
+
+    .omosindex p {
+      text-align: left;
+      max-width: 400px;
+      font-size: 1.2rem;
+    }
+  }
+</style>
