@@ -1,0 +1,118 @@
+---
+import RundKnap from "./RundKnap.astro";
+---
+
+<section class="shop">
+  <h2>Besøg vores shop</h2>
+
+  <div class="shop-grid">
+    <div class="shop-item">
+      <RundKnap tekst="Keramik" href="/shop" variant="brun" />
+      <img src="/imgs/kop.webp" alt="Keramik" />
+      <p>Pris: 250kr,-</p>
+    </div>
+
+    <div class="shop-item">
+      <RundKnap tekst="Plakater" href="/shop" variant="brun" />
+      <img src="/imgs/plakat.webp" alt="Plakater" />
+      <p>Pris: 250kr,-</p>
+    </div>
+
+    <div class="shop-item">
+      <RundKnap tekst="Merch" href="/shop" variant="brun" />
+      <img src="/imgs/tee.webp" alt="Merch" />
+      <p>Pris: 250kr,-</p>
+    </div>
+
+    <div class="shop-item">
+      <RundKnap tekst="Diverse" href="/shop" variant="brun" />
+      <img src="/imgs/bryster.webp" alt="Diverse" />
+      <p>Pris: 250kr,-</p>
+    </div>
+
+    <div class="shop-item shop-item--centered">
+      <RundKnap tekst="Kreativ" href="/shop" variant="brun" />
+      <img src="/imgs/broderi.webp" alt="Kreativ" />
+      <p>Pris: 250kr,-</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .shop {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .shop h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1.5rem;
+  }
+
+  .shop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .shop-item--centered {
+    grid-column: 1 / -1;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .shop-item img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    display: block;
+  }
+
+  .shop-item p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    background-color: #ede0d4;
+    width: 100%;
+    max-width: 220px;
+    padding: 0.4rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .shop {
+      padding: 4rem 4rem;
+    }
+
+    .shop h2 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .shop-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+
+    .shop-item--centered {
+      grid-column: auto; /* ← ikke centreret på desktop */
+      max-width: none;
+      margin: 0;
+    }
+
+    .shop-item img {
+      max-width: 100%;
+    }
+
+    .shop-item p {
+      max-width: 100%;
+    }
+  }
+</style>
