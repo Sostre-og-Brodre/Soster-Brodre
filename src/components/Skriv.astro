@@ -1,18 +1,29 @@
 ---
+import RundKnap from "./RundKnap.astro";
 ---
 
 <section class="skriv">
-    <h2>Samarbejd med os</h2>
-    <p>Skriv til os med jeres idé, projekt eller spørgsmål, så vender vi tilbage hurtigt.</p>
+  <h2>Samarbejd med os</h2>
+  <p>
+    Skriv til os med jeres idé, projekt eller spørgsmål, så vender vi tilbage
+    hurtigt.
+  </p>
+  <RundKnap tekst="Kontakt os" />
 </section>
 
-
 <style>
-  .skriv  {
-      text-align: center;
-      margin: 2rem 2rem;
-      padding: 3rem 2rem 0;
-      
-
+  .skriv {
+    text-align: center;
+    margin: 6rem auto 8rem;
+    padding: 3rem 2rem 0;
   }
+
+    .skriv h2 {
+        margin-bottom: 1rem;
+    }
+
+    .skriv p {
+        margin-bottom: 2rem;
+    }
+
 </style>
