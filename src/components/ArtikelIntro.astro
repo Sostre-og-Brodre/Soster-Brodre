@@ -3,7 +3,7 @@ const { title, billede, billedeAlt, citat, beskrivelse, undertitle, dato, forfat
 ---
 
 <article>
-    <h1>{title}</h1>
+    <h1 class="artikel">{title}</h1>
 
     <div class="intro">
         <img src={billede} alt={billedeAlt} />
@@ -68,12 +68,14 @@ const { title, billede, billedeAlt, citat, beskrivelse, undertitle, dato, forfat
     blockquote {
         margin-top: 1rem;
         font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: 3%;
     }
 
     @media (min-width: 768px) {
-        h1 {
-            font-size: 2.8rem;
-        }
+      
 
         .intro {
             flex-direction: row;
@@ -84,5 +86,13 @@ const { title, billede, billedeAlt, citat, beskrivelse, undertitle, dato, forfat
             width: 45%;
             flex-shrink: 0;
         }
+
+        blockquote {
+        
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 5%;
+
+    }
     }
 </style>
