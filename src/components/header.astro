@@ -1,4 +1,5 @@
 ---
+import CartIcon from "../components/CartIcon.astro";
 const currentPath = Astro.url.pathname;
 ---
 
@@ -24,15 +25,28 @@ const currentPath = Astro.url.pathname;
 
         <a href="/artikler" class={`header__nav-link ${currentPath === "/artikler" ? "active" : ""}`}> Artikler </a>
 
-        <a href="#" class={`header__nav-link ${currentPath === "/kurv" ? "active" : ""}`} aria-label="Kurv">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 01-8 0"/>
-            </svg>
-          </a>
+        <CartIcon />
     </nav>
 </header>
+
+<script>
+    const btn = document.getElementById("hamburger-btn");
+    const nav = document.getElementById("main-nav");
+
+    btn?.addEventListener("click", () => {
+        const isOpen = nav?.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.setAttribute("aria-label", isOpen ? "Luk menu" : "Åbn menu");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!btn?.contains(e.target as Node) && !nav?.contains(e.target as Node)) {
+            nav?.classList.remove("is-open");
+            btn?.setAttribute("aria-expanded", "false");
+            btn?.setAttribute("aria-label", "Åbn menu");
+        }
+    });
+</script>
 
 <style>
     .header {
@@ -171,7 +185,7 @@ const currentPath = Astro.url.pathname;
 
         .header__nav-link:hover {
             background: none;
-            opacity: 0.7;
+            opacity: 0.5;
         }
 
         .header__logo img {
@@ -199,22 +213,3 @@ const currentPath = Astro.url.pathname;
         }
     }
 </style>
-
-<script>
-    const btn = document.getElementById("hamburger-btn");
-    const nav = document.getElementById("main-nav");
-
-    btn?.addEventListener("click", () => {
-        const isOpen = nav?.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.setAttribute("aria-label", isOpen ? "Luk menu" : "Åbn menu");
-    });
-
-    document.addEventListener("click", (e) => {
-        if (!btn?.contains(e.target as Node) && !nav?.contains(e.target as Node)) {
-            nav?.classList.remove("is-open");
-            btn?.setAttribute("aria-expanded", "false");
-            btn?.setAttribute("aria-label", "Åbn menu");
-        }
-    });
-</script>

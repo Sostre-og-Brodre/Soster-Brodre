@@ -2,6 +2,7 @@
 import "../style/global.css";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import CartDrawer from "../components/CartDrawer.astro";
 const { heading } = Astro.props;
 ---
 
@@ -19,6 +20,7 @@ const { heading } = Astro.props;
     <body>
         <Header />
         <slot />
+        <CartDrawer />
         <Footer />
     </body>
 </html>
