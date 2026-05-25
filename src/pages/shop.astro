@@ -26,7 +26,7 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 
   <div class="textshop">
     <h1>Vores Webshop</h1>
-    <p>I Søstre & Brødres webshop kan du købe produkter, der både skaber synlighed omkring køn, ligestilling og fællesskab - og samtidig støtter vores arbejde. Her finder du blandt andet merchandise, plakater og andre udvalgte produkter, hvor overskuddet er med til at styrke vores oplysningsarbejde, udvikle nye initiativer samt støtte XXX.</p>
+    <p>I Søstre & Brødres webshop kan du købe produkter, der både skaber synlighed omkring køn, ligestilling og fællesskab - og samtidig støtter vores arbejde. Her finder du blandt andet merchandise, plakater og andre udvalgte produkter, hvor overskuddet er med til at styrke vores oplysningsarbejde, udvikle nye initiativer samt støtte vores forhandlere.</p>
 
   </div>
 
@@ -47,77 +47,68 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 
 </PageLayout>
 
+
 <script>
   const buttons = document.querySelectorAll(".filter-btn");
   const items = document.querySelectorAll(".shop-item");
 
-  buttons.forEach(button => {
+  const params = new URLSearchParams(window.location.search);
+  const startKategori = params.get("kategori") || "Alle";
 
-    button.addEventListener("click", () => {
-
-      const category = button.dataset.category;
-
-      items.forEach(item => {
-
-        if (
-          category === "Alle" ||
-          item.dataset.category === category
-        ) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-
-      });
-
+  function filtrer(category: string) {
+    items.forEach(item => {
+      if (category === "Alle" || item.dataset.category === category) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
     });
+  }
 
+  filtrer(startKategori);
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      filtrer(button.dataset.category);
+    });
   });
 </script>
-
 <style>
- 
-   .shop-item {
-    display: contents; 
-  }
-   .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto auto auto auto; 
-    align-items: center;
+.shop-item {
+ display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.textshop {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.textshop p {
+  margin-top: 2rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    margin: 2rem;
-  }
-  p {
-    margin-top: 2rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
- 
-  }
-  .textshop {
-    text-align: center;
-    margin: 2rem 0;
-    
- 
   }
 
-
-  @media (max-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-   
-    
-
-  
-    } 
-    p {
-      margin-top: 1rem;
+  .textshop p {
     margin-left: 1rem;
     margin-right: 1rem;
   }
-       
+}
 
-
-  }
 </style> 
