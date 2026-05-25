@@ -7,8 +7,8 @@ import Menushop from "../components/Menushop.astro";
 
 const options = {
   headers: {
-    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
+     apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
+    // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
   }
 };
 
@@ -45,12 +45,14 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 
   </div>
 
-</PageLayout>
+<!-- </PageLayout> -->
 
 
 <script>
-  const buttons = document.querySelectorAll(".filter-btn");
-  const items = document.querySelectorAll(".shop-item");
+  // const buttons = document.querySelectorAll(".filter-btn");
+  // const items = document.querySelectorAll(".shop-item");
+  const buttons = document.querySelectorAll<HTMLElement>(".filter-btn");
+const items = document.querySelectorAll<HTMLElement>(".shop-item");
 
   const params = new URLSearchParams(window.location.search);
   const startKategori = params.get("kategori") || "Alle";
@@ -69,7 +71,7 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-      filtrer(button.dataset.category);
+      filtrer(button.dataset.category || "Alle");
     });
   });
 </script>
@@ -78,15 +80,15 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
  display: grid;
   grid-row: span 4;
   grid-template-rows: subgrid;
+  gap: 0.75rem 2rem;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: subgrid;
-  align-items: start;
-  gap: 0.75rem 2rem;
-  margin: 2rem;
+ gap: 1rem 2rem;
+    padding: 1rem 2rem ;
 }
 
 .textshop {
@@ -101,13 +103,13 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 }
 
 .textshop h1{
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem 2rem;
+  
   }
 
   .textshop p {
@@ -117,3 +119,4 @@ const categories = [...new Set(data.map((item: { Category: any; }) => item.Categ
 }
 
 </style> 
+</PageLayout>

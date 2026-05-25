@@ -1,7 +1,6 @@
 ---
 //@ts-nocheck
 import PageLayout from "../../PageLayout/PageLayout.astro";
-import RundKnap from "../../components/RundKnap.astro";
 import AddToCart from "../../components/AddToCart.astro";
 
 export async function getStaticPaths() {
@@ -58,6 +57,7 @@ const { shop } = Astro.props;
       </div>
     </div>
   </section>
+</PageLayout>
   <script>
     const strBtns = document.querySelectorAll(".str-btn");
     strBtns.forEach((btn) => {
@@ -68,30 +68,22 @@ const { shop } = Astro.props;
     });
 
     let antal = 1;
-    const antalTal = document.getElementById("antal-tal");
+    const antalTal = document.getElementById("antal-tal") as HTMLElement;
 
-    document.getElementById("plus").addEventListener("click", () => {
+    document.getElementById("plus")?.addEventListener("click", () => {
       antal++;
-      antalTal.textContent = antal;
+      antalTal.textContent = String(antal);
     });
 
-    document.getElementById("minus").addEventListener("click", () => {
+    document.getElementById("minus")?.addEventListener("click", () => {
       if (antal > 1) {
         antal--;
-        antalTal.textContent = antal;
+        antalTal.textContent = String(antal);
       }
     });
   </script>
   <style>
-    .stoerrelse {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      margin: 1rem 2rem;
-      border: 2px solid #7a4f3a;
-      background-color: #7a4f3a3d;
-    }
-
+ 
     .str-btn {
       width: 48px;
       height: 48px;
@@ -156,68 +148,59 @@ const { shop } = Astro.props;
       margin-bottom: -0.5rem;
     }
 
-    img {
+   
+   img {
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 0.8;
       object-fit: cover;
-      border-radius: 4px;
-      border: 4px solid #a3bfb26b;
-      margin-right: 2rem;
-    }
-
-    * {
-      margin: 1rem;
-
       box-sizing: border-box;
+      border-radius: 4px;
+      max-height: 500px;
+        border: 4px solid #a3bfb26b;
+      margin: 1rem 0;
+      max-width: 400px;
+    justify-self: center;
     }
+ 
     section {
-      align-items: center;
-    }
-    .enknap {
       display: grid;
-      justify-content: center;
+      align-items: center;
+      margin: 4rem;
+ 
     }
+   
 
+    * {box-sizing: border-box;}
     .toknap {
       display: flex;
       gap: 1rem;
       place-content: center;
       margin-bottom: 2rem;
     }
-
-    img {
-      width: 100%;
-      aspect-ratio: 0.8;
-      object-fit: cover;
-      border-radius: 4px;
+    .samlettekst {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
+@media (min-width: 700px) {
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin: 2rem 4rem;
+  }
 
-    img {
-      width: 100%;
-      aspect-ratio: 0;
-      object-fit: cover;
-      box-sizing: border-box;
-      border-radius: 4px;
-      max-height: 500px;
-    }
+  img {
+    width: 100%;
+    aspect-ratio: 0.8;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 0;
+  }
 
-    @media (min-width: 1069px) {
-      img {
-        width: 100%;
-        aspect-ratio: 0.8;
-        object-fit: cover;
-        border-radius: 4px;
-        max-height: fit-content;
-      }
-      section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-      * {
-        margin: 2rem;
-        padding: 0;
-        box-sizing: border-box;
-      }
-    }
+
+}
+ 
   </style>
 </PageLayout>
