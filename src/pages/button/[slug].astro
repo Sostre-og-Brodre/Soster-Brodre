@@ -2,235 +2,222 @@
 //@ts-nocheck
 import PageLayout from "../../PageLayout/PageLayout.astro";
 import RundKnap from "../../components/RundKnap.astro";
+import AddToCart from "../../components/AddToCart.astro";
 
 export async function getStaticPaths() {
   const options = {
     headers: {
-      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs"
-    }
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rb3VveGZwdHd1aXV2eW5wZW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNDUzMzcsImV4cCI6MjA5NDkyMTMzN30.Ho_FKbZeRhGOL0hL93Ko2V096lDcpgy60FoR0cQHnWs",
+    },
   };
 
-  const response = await fetch(
-    "https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop",
-    options  
-  );
+  const response = await fetch("https://okouoxfptwuiuvynpeno.supabase.co/rest/v1/Shop", options);
   const data = await response.json();
 
   return data.map((shop) => ({
     params: { slug: shop.slug },
-    props:  { shop }
+    props: { shop },
   }));
 }
 
-const {shop} = Astro.props;
-
+const { shop } = Astro.props;
 ---
 
 <PageLayout heading={shop.Name}>
-      <a class="backbtn" href="/shop">Tilbage</a>
-        <h1>{shop.Undercategory}</h1>
-       
-      <section>
-       <img src={shop.Photo} alt={shop.Name} />
-    <div class="samlettekst"> <h2>{shop.Name}</h2>
-     <h3>{shop.Price} kr</h3>
-  <p>{shop.Smalldescription}</p>
-    <p>{shop.Description}</p>
-    
-<details class="dropdown">
-  <summary>VÆLG STØRRELSE</summary>
-  <div class="dropdown-indhold">
-    <button class="str-btn" data-size="S">S</button>
-    <button class="str-btn" data-size="M">M</button>
-    <button class="str-btn" data-size="L">L</button>
-  </div>
-</details>
+  <a class="backbtn" href="/shop">Tilbage</a>
+  <h1>{shop.Undercategory}</h1>
 
-<details class="dropdown">
-  <summary>1 STK</summary>
-  <div class="dropdown-indhold antal">
-    <button class="antal-btn" id="minus">−</button>
-    <span id="antal-tal">1</span>
-    <button class="antal-btn" id="plus">+</button>
-  </div>
-</details>
- 
- <div class="toknap">
-<RundKnap tekst="LÆG I KURVEN"/></div></section>
-</PageLayout> 
-<script>
- 
-  const strBtns = document.querySelectorAll(".str-btn");
-  strBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      strBtns.forEach(b => b.classList.remove("aktiv"));
-      btn.classList.add("aktiv");
+  <section>
+    <img src={shop.Photo} alt={shop.Name} />
+    <div class="samlettekst">
+      <h2>{shop.Name}</h2>
+      <h3>{shop.Price} kr</h3>
+      <p>{shop.Smalldescription}</p>
+      <p>{shop.Description}</p>
+
+      <details class="dropdown">
+        <summary>VÆLG STØRRELSE</summary>
+        <div class="dropdown-indhold">
+          <button class="str-btn" data-size="S">S</button>
+          <button class="str-btn" data-size="M">M</button>
+          <button class="str-btn" data-size="L">L</button>
+        </div>
+      </details>
+
+      <details class="dropdown">
+        <summary>1 STK</summary>
+        <div class="dropdown-indhold antal">
+          <button class="antal-btn" id="minus">−</button>
+          <span id="antal-tal">1</span>
+          <button class="antal-btn" id="plus">+</button>
+        </div>
+      </details>
+
+      <div class="toknap">
+        <AddToCart id={shop.id} name={shop.Name} price={shop.Price} image={shop.Photo} />
+      </div>
+    </div>
+  </section>
+  <script>
+    const strBtns = document.querySelectorAll(".str-btn");
+    strBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        strBtns.forEach((b) => b.classList.remove("aktiv"));
+        btn.classList.add("aktiv");
+      });
     });
-  });
 
+    let antal = 1;
+    const antalTal = document.getElementById("antal-tal");
 
-  let antal = 1;
-  const antalTal = document.getElementById("antal-tal");
-
-  document.getElementById("plus").addEventListener("click", () => {
-    antal++;
-    antalTal.textContent = antal;
-  });
-
-  document.getElementById("minus").addEventListener("click", () => {
-    if (antal > 1) {
-      antal--;
+    document.getElementById("plus").addEventListener("click", () => {
+      antal++;
       antalTal.textContent = antal;
+    });
+
+    document.getElementById("minus").addEventListener("click", () => {
+      if (antal > 1) {
+        antal--;
+        antalTal.textContent = antal;
+      }
+    });
+  </script>
+  <style>
+    .stoerrelse {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      margin: 1rem 2rem;
+      border: 2px solid #7a4f3a;
+      background-color: #7a4f3a3d;
     }
-  });
-</script>
-<style>
 
-  .stoerrelse {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    margin: 1rem 2rem;
-    border: 2px solid #7a4f3a;
-    background-color: #7a4f3a3d;
-  }
+    .str-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #7a4f3a;
+      background: transparent;
+      color: #7a4f3a;
+      font-weight: bold;
+      cursor: pointer;
+      transition:
+        background 0.2s,
+        color 0.2s;
+    }
 
-  .str-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid #7a4f3a;
-    background: transparent;
-    color: #7a4f3a;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
+    .str-btn.aktiv {
+      background: #7a4f3a;
+      color: white;
+    }
 
-  .str-btn.aktiv {
-    background: #7a4f3a;
-    color: white;
-  }
+    .antal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 1rem 2;
+    }
 
-  .antal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-    margin: 1rem 2;
-   
-  }
+    .antal-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #7a4f3a;
+      background: transparent;
+      color: #7a4f3a;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition:
+        background 0.2s,
+        color 0.2s;
+    }
 
-  .antal-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #7a4f3a;
-    background: transparent;
-    color: #7a4f3a;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
+    .antal-btn:hover {
+      background: #7a4f3a;
+      color: white;
+    }
 
-  .antal-btn:hover {
-    background: #7a4f3a;
-    color: white;
-  }
+    #antal-tal {
+      font-size: 1.25rem;
+      font-weight: bold;
+      min-width: 1.5rem;
+      text-align: center;
+    }
+    .backbtn {
+      display: inline-block;
+      margin: 1rem;
+      color: #333;
 
-  #antal-tal {
-    font-size: 1.25rem;
-    font-weight: bold;
-    min-width: 1.5rem;
-    text-align: center;
-  }
-  .backbtn {
-    display: inline-block;
-    margin: 1rem;
-    color: #333;
-    
-    font-weight: bold;
-   
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: -0.5rem;
-  
-  }
-   
-  img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 4px solid #a3bfb26b;
-    margin-right: 2rem;
-   
-  
-  }
+      font-weight: bold;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: -0.5rem;
+    }
 
-   * {
-    margin: 1rem; 
-   
-    box-sizing: border-box;
-  }
-  section {
-    align-items: center;
-    
-
-  }
-  .enknap {
-    display: grid;
-   justify-content: center;
- 
-}
-
-   .toknap {
-    display: flex;
-    gap: 1rem;
-    place-content: center;
-    margin-bottom: 2rem;
-  }
-
- 
- img {
+    img {
       width: 100%;
-      aspect-ratio: 0.8;
+      aspect-ratio: 1;
       object-fit: cover;
       border-radius: 4px;
-    
-  }
+      border: 4px solid #a3bfb26b;
+      margin-right: 2rem;
+    }
 
- 
- img {
-      width: 100%;
-      aspect-ratio: 0;
-      object-fit: cover;
+    * {
+      margin: 1rem;
+
       box-sizing: border-box;
-      border-radius: 4px;
-    max-height: 500px;
-  }
+    }
+    section {
+      align-items: center;
+    }
+    .enknap {
+      display: grid;
+      justify-content: center;
+    }
 
-  @media (min-width: 1069px) {
+    .toknap {
+      display: flex;
+      gap: 1rem;
+      place-content: center;
+      margin-bottom: 2rem;
+    }
+
     img {
       width: 100%;
       aspect-ratio: 0.8;
       object-fit: cover;
       border-radius: 4px;
-    max-height: fit-content;
-  }
-  section {
-display:grid;
-grid-template-columns: 1fr 1fr;
-  }
-  * {
-    margin: 2rem;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    }
 
+    img {
+      width: 100%;
+      aspect-ratio: 0;
+      object-fit: cover;
+      box-sizing: border-box;
+      border-radius: 4px;
+      max-height: 500px;
+    }
 
-
- }
-
-</style>
+    @media (min-width: 1069px) {
+      img {
+        width: 100%;
+        aspect-ratio: 0.8;
+        object-fit: cover;
+        border-radius: 4px;
+        max-height: fit-content;
+      }
+      section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      * {
+        margin: 2rem;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</PageLayout>
