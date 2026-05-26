@@ -12,157 +12,98 @@ import Skriv from "../components/Skriv.astro";
 <PageLayout>
   <OmOsHero />
   <Forskning />
-
-
   <section class="team">
+    <h2 class="hvemervi">Hvem er vi?</h2>
+    <div class="team-grid">
+      <Team billede="/imgs/caroline_result.webp" navn="Caroline" titel="MEDSTIFTER & FORPERSON" tekst="Caroline er den drivende kraft bag Søster til Søster og sætter den strategiske retning for organisationens arbejde med køn og ligestilling." />
+      <Team billede="/imgs/ulrikke_result.webp" navn="Ulrikke" titel="RESEARCHER & GRAFIKER" tekst="Ulrikke er organisationens blæksprutte — hun researcher, skriver og omsætter kompleks viden til tilgængeligt visuelt indhold." />
 
-  <h2 class="hvemervi">Hvem er vi?</h2>
+      <Team billede="/imgs/oskar_result.webp" navn="Oskar" titel="PARTNERSKABER & ØKONOMI" tekst="Oskar varetager samarbejder med partnere og organisationer og har ansvaret for den daglige økonomi." />
 
-  <div class="team-grid">
-    <Team
-      billede="/imgs/caroline_result.webp"
-      navn="Caroline"
-      titel="MEDSTIFTER & FORPERSON"
-      tekst="Caroline er den drivende kraft bag Søster til Søster og sætter den strategiske retning for organisationens arbejde med køn og ligestilling."
-    />
+      <Team billede="/imgs/karo_result.webp" navn="Karoline" titel="WEBSHOP ANSVARLIG" tekst="Karoline driver vores webshop og sikrer, at organisationens produkter er tilgængelige og opdaterede." />
 
-    <Team
-    billede="/imgs/ulrikke_result.webp"
-    navn="Ulrikke"
-    titel="RESEARCHER & GRAFIKER"
-    tekst="Ulrikke er organisationens blæksprutte — hun researcher, skriver og omsætter kompleks viden til tilgængeligt visuelt indhold."
-  />
-
-  <Team
-  billede="/imgs/oskar_result.webp"
-  navn="Oskar"
-  titel="PARTNERSKABER & ØKONOMI"
-  tekst="Oskar varetager samarbejder med partnere og organisationer og har ansvaret for den daglige økonomi."
-/>
-
-<Team
-billede="/imgs/karo_result.webp"
-navn="Karoline"
-titel="WEBSHOP ANSVARLIG"
-tekst="Karoline driver vores webshop og sikrer, at organisationens produkter er tilgængelige og opdaterede."
-/>
-
-<Team
-billede="/imgs/josefine_result.webp"
-navn="Josefine"
-titel="PODCAST & RESEARCH"
-tekst="Josefine står bag vores podcast og bidrager til den løbende research og formidling af nyheder om ligestilling."
-/>
-</div>
- 
+      <Team billede="/imgs/josefine_result.webp" navn="Josefine" titel="PODCAST & RESEARCH" tekst="Josefine står bag vores podcast og bidrager til den løbende research og formidling af nyheder om ligestilling." />
+    </div>
   </section>
 
   <Samarbejdspartnere />
 
+  <section class="samarbejde">
+    <h2>Hvordan samarbejder vi?</h2>
 
+    <div class="samarbejde-grid">
+      <Samarbejde
+        titel="Brandet content"
+        tekst="Sponsorerede opslag, serier eller kampagner, der formidler jeres budskab til vores fællesskab i et sprog og format, der virker."
+        punkter={["Instagram & LinkedIn", "Carousels & reels", "Redaktionel tone"]}
+      />
 
+      <Samarbejde
+        titel="Fondsstøttede projekter"
+        tekst="Længere forløb med dybere research og bredere formidling, typisk i samarbejde med fonde, styrelser eller organisationer."
+        punkter={["Projektledelse", "Research & analyse", "Visuel og skriftlig formidling"]}
+      />
 
+      <Samarbejde titel="Foredrag & oplæg" tekst="Vi holder oplæg på arbejdspladser, konferencer og uddannelsesinstitutioner om køn, medier og ligestilling." punkter={["Keynotes", "Workshops", "Paneldebatter"]} />
+    </div>
+  </section>
 
-
-<section class="samarbejde">
-
-  <h2>Hvordan samarbejder vi?</h2>
-
-  <div class="samarbejde-grid">
-  <Samarbejde
-    titel="Brandet content"
-    tekst="Sponsorerede opslag, serier eller kampagner, der formidler jeres budskab til vores fællesskab i et sprog og format, der virker."
-    punkter={[
-      "Instagram & LinkedIn",
-      "Carousels & reels",
-      "Redaktionel tone"
-    ]}
-  />
-
-
-  <Samarbejde
-titel="Fondsstøttede projekter"
-tekst="Længere forløb med dybere research og bredere formidling, typisk i samarbejde med fonde, styrelser eller organisationer."
-punkter={[
-  "Projektledelse",
-  "Research & analyse",
-  "Visuel og skriftlig formidling"
-]}
-/>
-
-  <Samarbejde
-  titel="Foredrag & oplæg"
-  tekst="Vi holder oplæg på arbejdspladser, konferencer og uddannelsesinstitutioner om køn, medier og ligestilling."
-  punkter={[
-    "Keynotes",
-    "Workshops",
-    "Paneldebatter"
-  ]}
-/>
-</div>
-</section>
-
-<style>
-
-  .samarbejde h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
+  <style>
+    .samarbejde h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
     .samarbejde {
-      background-color: #F2B6B680;
+      background-color: #f2b6b680;
       padding: 3rem 2rem 4rem;
       width: 100%;
     }
 
     .samarbejde-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
     .team {
-    background-color: #F2B6B680;
-    padding: 3rem 2rem 4rem;
-    width: 100%;
-  }
+      background-color: #f2b6b680;
+      padding: 3rem 2rem 4rem;
+      width: 100%;
+    }
 
     .team-grid {
-        display: grid;
-    grid-template-columns: 1fr; 
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .hvemervi {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-
-@media (min-width: 768px) {
-  .team-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .team-grid > * {
-    flex: 0 0 calc(33.333% - 1.5rem);
-  }
-
-    .samarbejde-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-}
 
-</style>
+    .hvemervi {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
+    @media (min-width: 768px) {
+      .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
 
+      .team-grid > * {
+        flex: 0 0 calc(33.333% - 1.5rem);
+      }
 
-  <Skriv/>
+      .samarbejde-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+    }
+  </style>
+
+  <Skriv />
 </PageLayout>
